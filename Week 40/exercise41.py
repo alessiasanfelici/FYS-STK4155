@@ -3,12 +3,15 @@ from functions2  import *
 MaxPolynomial = 12
 
 x, y, z = generate_data(FrankesFunction = True)
-X = create_X(x, y, MaxPolynomial)
-X_train, X_test, z_train, z_test  = train_test_split(X, z, test_size = 0.2, random_state = 42)
+#X = create_X(x, y, MaxPolynomial)
+#X_train, X_test, z_train, z_test  = train_test_split(X, z, test_size = 0.2, random_state = 42)
 
-#x_train, x_test, y_train, y_test , z_train, z_test  = train_test_split(x, y,z ,test_size=0.2 ,random_state=42)
+x_train, x_test, y_train, y_test , z_train, z_test  = train_test_split(x, y,z ,test_size=0.2 ,random_state=42)
+
 z_train = z_train.reshape(-1,1)
 z_test = z_test.reshape(-1,1)
+X_train = create_X(x_train, y_train, MaxPolynomial)
+X_test = create_X(x_test, y_test, MaxPolynomial)
 
 mse_test  = np.zeros((MaxPolynomial, 10))
 mse_train = np.zeros((MaxPolynomial, 10))
